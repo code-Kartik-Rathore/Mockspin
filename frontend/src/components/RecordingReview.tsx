@@ -1,11 +1,12 @@
 import React from 'react';
 import { Film, Trash2, Calendar } from 'lucide-react';
+import type { Question } from '../data/questions';
 
 export interface Recording {
   id: string;
   url: string;
   questionText: string;
-  subject: 'OS' | 'DBMS' | 'OOPS';
+  subject: Question['subject'];
   timestamp: string;
 }
 
@@ -18,7 +19,7 @@ export const RecordingReview: React.FC<RecordingReviewProps> = ({
   recordings,
   onDeleteRecording,
 }) => {
-  const getSubjectDisplay = (subject: 'OS' | 'DBMS' | 'OOPS') => {
+  const getSubjectDisplay = (subject: Question['subject']) => {
     switch (subject) {
       case 'OS':
         return 'OS';
@@ -26,12 +27,26 @@ export const RecordingReview: React.FC<RecordingReviewProps> = ({
         return 'DBMS';
       case 'OOPS':
         return 'OOPS';
+      case 'IIT_Ropar':
+        return 'IIT Ropar';
+      case 'Zebpay':
+        return 'Zebpay';
+      case 'Achievements':
+        return 'Achievements';
+      case 'Skills':
+        return 'Skills';
+      case 'MedConnect':
+        return 'MedConnect';
+      case 'SupportDesk':
+        return 'SupportDesk';
+      case 'Resume':
+        return 'Resume';
       default:
         return subject;
     }
   };
 
-  const getSubjectColor = (subject: 'OS' | 'DBMS' | 'OOPS') => {
+  const getSubjectColor = (subject: Question['subject']) => {
     switch (subject) {
       case 'OS':
         return 'bg-blue-500/10 text-blue-400 border-blue-500/20';
@@ -39,6 +54,20 @@ export const RecordingReview: React.FC<RecordingReviewProps> = ({
         return 'bg-purple-500/10 text-purple-400 border-purple-500/20';
       case 'DBMS':
         return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
+      case 'IIT_Ropar':
+        return 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20';
+      case 'Zebpay':
+        return 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20';
+      case 'Achievements':
+        return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
+      case 'Skills':
+        return 'bg-teal-500/10 text-teal-400 border-teal-500/20';
+      case 'MedConnect':
+        return 'bg-rose-500/10 text-rose-400 border-rose-500/20';
+      case 'SupportDesk':
+        return 'bg-sky-500/10 text-sky-400 border-sky-500/20';
+      case 'Resume':
+        return 'bg-violet-500/10 text-violet-400 border-violet-500/20';
       default:
         return 'bg-slate-500/10 text-slate-400 border-slate-500/20';
     }

@@ -13,6 +13,13 @@ function App() {
     OS: true,
     DBMS: true,
     OOPS: true,
+    IIT_Ropar: true,
+    Zebpay: true,
+    Achievements: true,
+    Skills: true,
+    MedConnect: true,
+    SupportDesk: true,
+    Resume: true,
   });
 
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
@@ -39,7 +46,7 @@ function App() {
     return candidates[randomIndex];
   };
 
-  const toggleSubject = (subject: 'OS' | 'DBMS' | 'OOPS') => {
+  const toggleSubject = (subject: Question['subject']) => {
     setSubjectsEnabled((prev) => {
       const next = { ...prev, [subject]: !prev[subject] };
       // Prevent disabling all subjects
@@ -56,7 +63,7 @@ function App() {
     // Filter questions by enabled subjects
     const activeSubjects = Object.keys(subjectsEnabled).filter(
       (key) => subjectsEnabled[key as keyof typeof subjectsEnabled]
-    ) as ('OS' | 'DBMS' | 'OOPS')[];
+    ) as Question['subject'][];
 
     if (activeSubjects.length === 0) return null;
 
@@ -101,7 +108,7 @@ function App() {
 
     const activeSubjects = Object.keys(subjectsEnabled).filter(
       (key) => subjectsEnabled[key as keyof typeof subjectsEnabled]
-    ) as ('OS' | 'DBMS' | 'OOPS')[];
+    ) as Question['subject'][];
     const candidateQuestions = questions.filter((q) =>
       activeSubjects.includes(q.subject)
     );
@@ -297,7 +304,7 @@ function App() {
                   1
                 </span>
                 <p>
-                  Use the **Subjects** panel on the left to filter the topics you want to practice (OS, DBMS, OOPS).
+                  Use the **Subjects** panel on the left to filter the topics you want to practice (Theory, Internships, Projects, Resume, etc.).
                 </p>
               </div>
 
